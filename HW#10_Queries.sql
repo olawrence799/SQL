@@ -103,25 +103,25 @@ select title
 from film
 where title like 'K%' or title like 'Q%'
 and language_id in
-(
-select language_id
-from language
-where name = 'English'
-);
-
+ (
+ select language_id
+ from language
+ where name = 'English'
+ );
+ 
 # 7b)
 select `Actor Name`
 from actor
 where actor_id in
-(
-select actor_id
-from film_actor
-where film_id in
-(select film_id
-from film
-where title = 'Alone Trip'
-)
-);
+ (
+ select actor_id
+ from film_actor
+ where film_id in
+  (select film_id
+  from film
+  where title = 'Alone Trip'
+  )
+ );
 
 # 7c)
 select c.first_name, c.last_name, c.email
